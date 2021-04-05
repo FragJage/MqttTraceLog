@@ -1,0 +1,56 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$MqttTraceLog-primary: $mat-deep-purple;
+$MqttTraceLog-accent: $mat-deep-orange;
+$MqttTraceLog-warn: $mat-red;
+
+$MqttTraceLog-theme: mat-light-theme((
+  color: (
+    primary: mat-palette($MqttTraceLog-primary, 500, 100, 700),
+    accent: mat-palette($MqttTraceLog-accent, 500, 100, 700),
+    warn: mat-palette($MqttTraceLog-warn, 500, 100, 700)
+  )
+));
+
+@include angular-material-theme($MqttTraceLog-theme);
+
+$MqttTraceLog-dark-theme: mat-dark-theme((
+  color: (
+    primary: mat-palette($MqttTraceLog-primary, 700, 300, 900),
+    accent: mat-palette($MqttTraceLog-accent, 700, 300, 900),
+    warn: mat-palette($MqttTraceLog-warn, 700, 300, 900)
+  )
+));
+.darkMode {
+  @include angular-material-theme($MqttTraceLog-dark-theme);
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+tr.logger { background-color: #eee; }
+.darkMode tr.logger { background-color: #222; }
+
+.tile {
+  margin: 5px;
+  background-image: linear-gradient(map-get($mat-deep-purple, 100), map-get($mat-deep-purple, 100) 35%, map-get($mat-grey, 100) 35%, map-get($mat-grey, 100));
+}
+
+.darkMode .tile {
+  margin: 5px;
+  background-image: linear-gradient(map-get($mat-deep-purple, 400), map-get($mat-deep-purple, 400) 35%, map-get($mat-grey, 800) 35%, map-get($mat-grey, 800));
+}

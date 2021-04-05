@@ -1,0 +1,100 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+#MainDiv {
+    padding: 10px;
+    display: flex;
+}
+
+#FilterDiv {
+    width: 200px;
+}
+
+#LogDiv {
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+    width: calc(100% - 200px);
+}
+
+#LogTable thead {
+    position: sticky;
+    top: 0;
+}
+
+h4 {
+    margin: 0 20px 0 0;
+    border-bottom: 1px solid #777;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 4px;
+    padding-left: 0;
+    font-size: 12px;
+}
+  
+table {
+    border-collapse: collapse;
+    font-size: 12px;
+    width:100%;
+}
+
+td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+    vertical-align: top;
+}
+
+th {
+    text-align: left;
+    padding: 5px 10px;
+}
+
+.align-right {
+    text-align: right;
+    margin: 0px;
+    line-height: 14px;
+}
+
+.info-title {
+    display: inline-block;
+    margin-right: 5px;
+    color:#777;
+}
+
+.info-value {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.little-caps {
+    font-size: 10px;
+}
+
+#log-counter {
+    color: #777;
+}
+
+.fatal {
+    background-color: map-get($mat-red, 800);
+}
+
+.error {
+    color: map-get($mat-red, 800);
+}
+
+.warning {
+    color: map-get($mat-orange, 800);
+}
+
+.verbose {
+    color: map-get($mat-green, 800);
+}
+
+.debug {
+    color: map-get($mat-blue, 800);
+}
+
+.trace {
+    color: map-get($mat-blue-grey, 800);
+}

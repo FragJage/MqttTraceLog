@@ -1,0 +1,52 @@
+<div id="MainDiv">
+  <div id="FilterDiv">
+    <h3>Filters</h3>
+    <mat-form-field class="example-full-width">
+      <mat-label>Keyword</mat-label>
+      <input matInput (keyup)="searchChange($event)">
+    </mat-form-field>
+    <h4>Sources</h4>
+    <ul>
+      <li *ngFor="let source of sourcesList">
+        <mat-checkbox (change)="sourceChange($event)" value="{{source}}">
+          {{source}}
+        </mat-checkbox>
+      </li>
+    </ul>
+    <h4>Levels</h4>
+    <ul>
+      <li *ngFor="let level of levelsList">
+        <mat-checkbox (change)="levelChange($event)" value="{{level}}">
+          {{level}}
+        </mat-checkbox>
+      </li>
+    </ul>
+    <p id="log-counter" class="mat-small">{{logsFiltered.length}} logs.</p>
+  </div>
+  <div id="LogDiv">
+    <table id="LogTable">
+      <thead>
+        <tr class="logger">
+          <th>Time</th>
+          <th>Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of logsFiltered">
+          <td>
+            <p class="align-right">{{log.date | date:'dd/MM/yyyy'}}</p>
+            <p class="align-right">{{log.date | date:'HH:mm:ss'}}</p>
+          </td>
+          <td>
+            <div class="info-title">source</div><div class="info-value">{{log.topic}}</div>
+            <div class="info-title">level</div><div class="info-value little-caps {{log.level.toLowerCase()}}">{{log.level}}</div>
+            <div class="info-title">file</div><div class="info-value">{{log.file}} l.{{log.line}}</div>
+            <div class="info-title">method</div><div class="info-value">{{log.method}}</div>
+            <br>
+            <div [innerHTML]="log.event | highlightSearch : keyword"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

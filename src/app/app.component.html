@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['LogViewer']">
+        <span>Log viewer</span>
+    </button>
+    <button mat-menu-item [routerLink]="['LogLevelManager']">
+        <span>Manage log level</span>
+    </button>
+    <button mat-menu-item (click)="SetToogleMode()">
+        <mat-icon *ngIf="isDarkMode">done</mat-icon>
+        <span>Dark mode</span>
+    </button>
+</mat-menu>
+
+<router-outlet></router-outlet>

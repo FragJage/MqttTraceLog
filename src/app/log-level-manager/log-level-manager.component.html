@@ -1,0 +1,17 @@
+<div class="container">
+    <mat-card class="tile" *ngFor="let source of sourcesList">
+        <mat-card-header>
+            <div mat-card-avatar></div>
+            <mat-card-title>{{source}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field floatLabel="always">
+                <mat-label>Log level</mat-label>
+                <mat-select [(value)]="levelBySrc[source]">
+                <mat-option *ngFor="let level of levelsList" [value]="level">{{level}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-flat-button color="primary" (click)="SetLogLevel(source)">Ok</button>
+        </mat-card-content>
+    </mat-card>
+</div>
